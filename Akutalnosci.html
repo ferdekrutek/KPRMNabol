@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPRM - Aktualności i Projekty w Trakcie Prac</title>
+    <meta name="description" content="Najnowsze informacje i projekty Kancelarii Prezesa Rady Ministrów w trakcie realizacji.">
+
+    <style>
+        /* --- STYLIZACJA CSS --- */
+        :root {
+            --color-kprm-granat: #0a234f;
+            --color-kprm-zloto: #fecb01;
+            --color-kprm-czerwien: #e2002f;
+            --color-kprm-turkus: #008080;
+            --color-white: #ffffff;
+            --color-text-dark: #333333;
+            --color-background-light: #f7f7f7;
+            --color-background-accent: #eaf1f7;
+        }
+
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background-light);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--color-kprm-granat);
+            color: var(--color-white);
+            padding: 25px 0;
+            border-bottom: 5px solid var(--color-kprm-zloto);
+            text-align: center;
+        }
+
+        header .logo {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header .slogan {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        /* NOWY STYL DLA PRZYCISKU POWROTU */
+        .header-button {
+            display: inline-block;
+            background-color: var(--color-kprm-zloto);
+            color: var(--color-kprm-granat);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .header-button:hover {
+            background-color: var(--color-white);
+            transform: scale(1.05);
+        }
+        /* KONIEC NOWEGO STYLU */
+
+        /* MAIN NAVIGATION BUTTONS */
+        .main-navigation {
+            background-color: var(--color-white);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            padding: 20px 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .main-navigation .button-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .main-navigation .nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-kprm-granat);
+            color: var(--color-white);
+            padding: 18px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            min-width: 220px;
+            transition: transform 0.3s ease-out, background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        .main-navigation .nav-button:hover,
+        .main-navigation .nav-button.active {
+            background-color: var(--color-kprm-czerwien);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        /* SEKCJA OGÓLNA */
+        .section-header {
+            color: var(--color-kprm-granat);
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-kprm-zloto);
+            border-radius: 2px;
+        }
+        
+        /* AKTUALNOŚCI LISTA */
+        .aktualnosci-list {
+            background-color: var(--color-background-accent);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .aktualnosci-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px dashed #cccccc;
+        }
+
+        .aktualnosci-item:last-child {
+            border-bottom: none;
+        }
+
+        .aktualnosci-data {
+            font-weight: bold;
+            color: var(--color-kprm-czerwien);
+            min-width: 100px;
+            font-size: 0.9em;
+            padding-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .aktualnosci-tresc h3 {
+            color: var(--color-kprm-granat);
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.4em;
+        }
+        
+        .aktualnosci-tresc a {
+            color: var(--color-kprm-granat);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .aktualnosci-tresc a:hover {
+            color: var(--color-kprm-czerwien);
+        }
+
+        /* PROJECTS IN PROGRESS SECTION */
+        .projects-in-progress-section {
+            padding: 40px 0;
+            margin-bottom: 40px;
+        }
+
+        /* Ustawienie: Maksymalnie 3 kolumny */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 30px; 
+        }
+
+        .project-card {
+            background-color: var(--color-white);
+            border: 1px solid #ddd;
+            border-top: 5px solid var(--color-kprm-turkus);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: var(--color-kprm-granat);
+            margin-top: 0;
+            border-bottom: 2px solid var(--color-kprm-turkus);
+            padding-bottom: 10px;
+            font-size: 1.25em;
+        }
+
+        .project-card .project-status {
+            display: inline-block;
+            background-color: var(--color-kprm-turkus);
+            color: var(--color-white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .project-card a {
+            color: var(--color-kprm-turkus);
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-kprm-granat);
+            color: var(--color-white);
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9em;
+            border-top: 5px solid var(--color-kprm-zloto);
+        }
+
+        footer a {
+            color: var(--color-kprm-zloto);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--color-white);
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 768px) {
+            .aktualnosci-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .aktualnosci-data {
+                padding-right: 0;
+                margin-bottom: 5px;
+            }
+            .projects-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .header-button {
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Kancelaria Prezesa Rady Ministrów</div>
+            <p class="slogan">Sprawny Rząd, Silna Polska</p>
+            <a href="Stronarządowatest.html" class="header-button">Powrót do Strony Głównej</a>
+        </div>
+    </header>
+
+    <div class="main-navigation">
+        <div class="container">
+            <div class="button-grid">
+                <a href="#" class="nav-button active">Aktualności</a> 
+                <a href="Projekty.html" class="nav-button">Projekty Rządowe</a>
+                <a href="Stronarządowatest.html#ustawy" class="nav-button">Ustawy Rządowe</a>
+                <a href="https://forms.gle/43zSrjyZbKW648o47" class="nav-button" target="_blank">Kontakt</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="aktualnosci-list">
+            <h2 class="section-header">Najnowsze Informacje i Komunikaty</h2>
+
+            <div class="aktualnosci-item">
+                <span class="aktualnosci-data">12.11.2025</span>
+                <div class="aktualnosci-tresc">
+                    <h3>Konferencja: Przyszłość Energetyki Jądrowej</h3>
+                    <p>Prezes Rady Ministrów spotkał się z ekspertami z branży energetycznej, aby omówić kluczowe etapy wdrożenia budowy drugiej elektrowni jądrowej w Polsce. <a href="#">Czytaj więcej...</a></p>
+                </div>
+            </div>
+
+            <div class="aktualnosci-item">
+                <span class="aktualnosci-data">05.11.2025</span>
+                <div class="aktualnosci-tresc">
+                    <h3>Podpisanie Ustawy o Funduszu Cyfryzacji</h3>
+                    <p>Prezydent podpisał nowelizację ustawy, która przeznacza dodatkowe 3 mld zł na projekty związane z cyberbezpieczeństwem i rozwojem e-usług publicznych. <a href="#">Czytaj więcej...</a></p>
+                </div>
+            </div>
+
+            <div class="aktualnosci-item">
+                <span class="aktualnosci-data">28.10.2025</span>
+                <div class="aktualnosci-tresc">
+                    <h3>Nowa Rada ds. Inwestycji Regionalnych</h3>
+                    <p>Powołano nowy zespół doradczy, którego zadaniem będzie koordynacja i przyspieszenie dużych inwestycji infrastrukturalnych w regionach o najniższym wskaźniku PKB per capita. <a href="#">Czytaj więcej...</a></p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="projects-in-progress-section">
+            <h2 class="section-header">Projekty Rządowe w Trakcie Opracowywania</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <span class="project-status">W Trakcie Prac</span>
+                    <h3>Pakiet Ochrony Środowiska</h3>
+                    <p>Projekt nowelizacji ustaw regulujących gospodarkę wodną i zasady recyklingu odpadów przemysłowych. Konsultacje społeczne w toku.</p>
+                    <a href="#">Status prac &raquo;</a>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-status">W Trakcie Prac</span>
+                    <h3>Reforma Szkolnictwa Zawodowego</h3>
+                    <p>Opracowanie nowych standardów nauczania i modernizacja pracowni w szkołach technicznych, dostosowanie do potrzeb Przemysłu 4.0.</p>
+                    <a href="#">Status prac &raquo;</a>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-status">W Trakcie Prac</span>
+                    <h3>Program Mieszkanie Dostępne</h3>
+                    <p>Stworzenie systemu preferencyjnych kredytów i dopłat dla młodych rodzin na zakup pierwszego mieszkania. Projekt w fazie międzyresortowej.</p>
+                    <a href="#">Status prac &raquo;</a>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-status">W Trakcie Prac</span>
+                    <h3>Cyfrowa Granica</h3>
+                    <p>Inwestycje w najnowocześniejsze systemy monitorowania i kontroli na wschodniej granicy kraju, w celu zwiększenia bezpieczeństwa i efektywności.</p>
+                    <a href="#">Status prac &raquo;</a>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-status">W Trakcie Prac</span>
+                    <h3>Wsparcie dla Samorządów</h3>
+                    <p>Utworzenie nowego Funduszu Inwestycji Samorządowych, mającego na celu finansowanie projektów komunalnych w małych miejscowościach.</p>
+                    <a href="#">Status prac &raquo;</a>
+                </div>
+
+                <div class="project-card">
+                    <span class="project-status">W Trakcie Prac</span>
+                    <h3>Nowa Ustawa Hazardowa</h3>
+                    <p>Gruntowna nowelizacja przepisów dotyczących gier losowych i zakładów bukmacherskich, mająca na celu zwiększenie ochrony graczy.</p>
+                    <a href="#">Status prac &raquo;</a>
+                </div>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kancelaria Prezesa Rady Ministrów</p>
+            <p>
+                <a href="#polityka">Polityka Prywatności</a> |
+                <a href="#dostepnosc">Deklaracja Dostępności</a> |
+                <a href="#rodo">RODO</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
