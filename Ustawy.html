@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPRM - Ustawy Rządowe</title>
+    <meta name="description" content="Lista ustaw wprowadzonych przez rząd Gustawa Nabolskiego.">
+    <link rel="icon" type="image/png" href="logo_kprm.png"> <style>
+    /* ... (reszta stylów) ... */
+    </style>
+</head>
+
+    <style>
+        /* --- STYLIZACJA CSS (SKOPIOWANA Z Akutalnosci.html) --- */
+        :root {
+            --color-kprm-granat: #0a234f;
+            --color-kprm-zloto: #fecb01;
+            --color-kprm-czerwien: #e2002f;
+            --color-kprm-turkus: #008080; /* Nieużywany w tej sekcji, ale zachowany dla spójności */
+            --color-white: #ffffff;
+            --color-text-dark: #333333;
+            --color-background-light: #f7f7f7;
+            --color-background-accent: #eaf1f7;
+        }
+
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background-light);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--color-kprm-granat);
+            color: var(--color-white);
+            padding: 25px 0;
+            border-bottom: 5px solid var(--color-kprm-zloto);
+            text-align: center;
+        }
+
+        header .logo {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        /* STYL DLA PRZYCISKU POWROTU (z headera) */
+        .header-button {
+            display: inline-block;
+            background-color: var(--color-kprm-zloto);
+            color: var(--color-kprm-granat);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .header-button:hover {
+            background-color: var(--color-white);
+            transform: scale(1.05);
+        }
+
+        /* MAIN NAVIGATION BUTTONS */
+        .main-navigation {
+            background-color: var(--color-white);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            padding: 20px 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .main-navigation .button-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .main-navigation .nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-kprm-granat);
+            color: var(--color-white);
+            padding: 18px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            min-width: 220px;
+            transition: transform 0.3s ease-out, background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        .main-navigation .nav-button:hover:not(.active),
+        .main-navigation .nav-button.active {
+            background-color: var(--color-kprm-czerwien);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Ustawienie stylu aktywnego przycisku (bez transformacji i z innym kursorem) */
+         .main-navigation .nav-button.active {
+            transform: none; /* Aktywny przycisk nie powinien być podniesiony */
+            cursor: default;
+        }
+        
+        /* SEKCJA OGÓLNA */
+        .section-header {
+            color: var(--color-kprm-granat);
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-kprm-zloto);
+            border-radius: 2px;
+        }
+
+        /* LISTA USTAW */
+        .ustawy-list {
+            list-style: none;
+            padding: 0;
+            background-color: var(--color-background-accent);
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .ustawy-item {
+            padding: 20px 0;
+            border-bottom: 1px dashed #cccccc;
+        }
+
+        .ustawy-list .ustawy-item:last-child {
+            border-bottom: none;
+        }
+
+        .ustawy-item h3 {
+            color: var(--color-kprm-granat);
+            margin-top: 0;
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .ustawy-item p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .ustawy-item .status {
+            font-weight: bold;
+            color: var(--color-kprm-czerwien);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-kprm-granat);
+            color: var(--color-white);
+            text-align: center;
+            padding: 25px 0;
+            font-size: 0.9em;
+            border-top: 5px solid var(--color-kprm-zloto);
+            margin-top: 50px;
+        }
+        
+        footer a {
+            color: var(--color-kprm-zloto);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--color-white);
+        }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 768px) {
+            .main-navigation .button-grid {
+                flex-direction: column; 
+                align-items: center;
+            }
+            .main-navigation .nav-button {
+                width: 80%; 
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Kancelaria Prezesa Rady Ministrów</div>
+            <p class="slogan">Wprowadzone Akty Prawne</p>
+            <a href="Stronarządowatest.html" class="header-button">Powrót do Strony Głównej</a>
+        </div>
+    </header>
+
+    <div class="main-navigation">
+        <div class="container">
+            <div class="button-grid">
+                <a href="Akutalnosci.html" class="nav-button">Aktualności</a>
+                <a href="Projekty.html" class="nav-button">Projekty Rządowe</a>
+                <a href="Ustawy.html" class="nav-button active">Ustawy Rządowe</a>
+                <a href="Kontakt.html" class="nav-button">Kontakt</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        
+        <h2 class="section-header">Zbiór Wprowadzonych Ustaw</h2>
+        
+        <ul class="ustawy-list">
+            <li class="ustawy-item">
+                <h3>Ustawa o Cyfryzacji Usług Publicznych (UCUP)</h3>
+                <p>Data wejścia w życie: 2026-03-01</p>
+                <p>Cel: Wprowadzenie obowiązku elektronicznego składania pism w administracji centralnej i samorządowej.</p>
+                <p class="status">Status: Obowiązująca</p>
+            </li>
+            <li class="ustawy-item">
+                <h3>Ustawa o Funduszu Transformacji Energetycznej</h3>
+                <p>Data wejścia w życie: 2026-04-15</p>
+                <p>Cel: Utworzenie funduszu wspierającego projekty OZE oraz transformację regionów górniczych.</p>
+                <p class="status">Status: Obowiązująca</p>
+            </li>
+            <li class="ustawy-item">
+                <h3>Ustawa o Ułatwieniach dla Małych Przedsiębiorstw</h3>
+                <p>Data wejścia w życie: 2026-01-01</p>
+                <p>Cel: Obniżenie składek na ubezpieczenia społeczne dla najmniejszych firm na okres 2 lat.</p>
+                <p class="status">Status: Obowiązująca</p>
+            </li>
+            <li class="ustawy-item">
+                <h3>Nowelizacja Kodeksu Pracy (Elastyczny Czas Pracy)</h3>
+                <p>Data wejścia w życie: 2026-05-20</p>
+                <p>Cel: Wprowadzenie dodatkowych form elastycznego czasu pracy na wniosek pracownika.</p>
+                <p class="status">Status: Obowiązująca</p>
+            </li>
+            <li class="ustawy-item">
+                <h3>Ustawa o Krajowym Systemie Monitorowania Zdrowia</h3>
+                <p>Data wejścia w życie: 2026-06-10</p>
+                <p>Cel: Utworzenie centralnej bazy danych do monitorowania kolejek i dostępności świadczeń medycznych.</p>
+                <p class="status">Status: Obowiązująca</p>
+            </li>
+            <li class="ustawy-item">
+                <h3>Ustawa o Budżetach Obywatelskich w Powiatach</h3>
+                <p>Data wejścia w życie: 2026-02-05</p>
+                <p>Cel: Rozszerzenie zakresu działania budżetów obywatelskich na poziom powiatów.</p>
+                <p class="status">Status: Obowiązująca</p>
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kancelaria Prezesa Rady Ministrów</p>
+            <p>
+                <a href="#polityka">Polityka Prywatności</a> |
+                <a href="#dostepnosc">Deklaracja Dostępności</a> |
+                <a href="#rodo">RODO</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
